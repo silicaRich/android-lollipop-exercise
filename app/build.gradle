@@ -2,12 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    buildToolsVersion "23.0.0"
 
     defaultConfig {
         applicationId "com.codepath.android.lollipopexercise"
         minSdkVersion 21
-        targetSdkVersion 24
+        vectorDrawables.useSupportLibrary = true
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -19,6 +20,11 @@ android {
     }
 }
 
+
+ext {
+    supportLibVersion = '23.0.0'  // variable that can be referenced to keep support libs consistent
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:24.0.0'
@@ -27,4 +33,12 @@ dependencies {
     compile 'com.android.support:cardview-v7:24.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:palette-v7:24.0.0'
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:design:${supportLibVersion}"
+    compile "com.android.support:percent:${supportLibVersion}"
+    compile "com.android.support:support-vector-drawable:${supportLibVersion}" // VectorDrawableCompat
+    compile "com.android.support:animated-vector-drawable:${supportLibVersion}" // AnimatedVectorDrawableCompat
+    compile "com.android.support:support-annotations:${supportLibVersion}" // Annotations library
+
+
 }
