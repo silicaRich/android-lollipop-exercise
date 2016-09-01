@@ -1,5 +1,6 @@
 package com.codepath.android.lollipopexercise.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +53,6 @@ public class ContactsActivity extends AppCompatActivity {
                 .setAction(R.string.snackbar_action, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        hi();
                     }
                 })  // action text on the right side
                 .setActionTextColor(getResources().getColor(R.color.accent))
@@ -64,6 +64,7 @@ public class ContactsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_contacts, menu);
+
         return true;
     }
 
@@ -74,10 +75,10 @@ public class ContactsActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        contacts.add(0, Contact.getRandomContact(ContactsActivity.this));
+        mAdapter.notifyItemInserted(0);
+
         return super.onOptionsItemSelected(item);
     }
 
-    public void hi(){
-
-    }
 }
